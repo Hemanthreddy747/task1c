@@ -1,0 +1,90 @@
+* {
+  margin: 1px solid red;
+}
+body {
+  /* max-width: 1200px; */
+  margin: 0 auto;
+}
+a{
+  font-size: .8rem;
+}
+.row div {
+  width: 33.333%;
+}
+img {
+  width: 100%;
+  /* height: auto; */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* margin: -10px; To remove gap between images */
+}
+
+.imgcontainer {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+button{
+  padding:15px;
+  border-radius: 20px;
+  background-color: burlywood;
+}
+p{
+  text-align: justify;
+  padding:50px;
+  padding-top:0px;
+
+}
+#btn1:hover, #btn2:hover, #btn3:hover, #btn4:hover{
+
+  background-color: black;
+  color:white;
+
+}
+
+
+.centered>.spanf1,  .centered>.spanf2, .centered>.spanf3, .centered>.spanp2, .centered>.spanp2, .centered>.spanp3{
+  display: none;
+}
+
+.f1:hover + .centered>.spanf1  {
+  display: block;
+  
+}
+.f2:hover + .centered>.spanf2  {
+  display: block;
+}
+.f3:hover + .centered>.spanf3  {
+  display: block;
+  
+}
+.divbutton{
+  display :block;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+
+}
+.divbutton>button{
+  margin-top: 10px;
+  background-color: white;
+  text-align: center;
+}
+
+
+/* Add some styles for larger screens */
+@media (max-width: 799px) {
+  .row > div {
+    width: 100vw;
+  }
+}
