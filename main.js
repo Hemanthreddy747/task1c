@@ -1,6 +1,6 @@
 
 document.getElementById("btn1").style.background = '#000000';
-document.getElementById("btn1").style.color = 'white'; 
+document.getElementById("btn1").style.color = 'white';
 
 document.getElementById("btn1").onclick = function () {
   document.getElementById("data").innerHTML = "We offer same day delivery on gift basket orders placed before 11 A.M. PST. We deliver to Los Angeles. We deliver to: Santa Fe Springs, Norwalk, La Mirada, Whittier, Cerritos, Downey, Artesia, Bellflower, Pico Rivera, Buena Park, La Palma, Lakewood, La Habra, Bell, Fullerton, Paramount, Hawaiian Gardens, Montebello, Hacienda Heights, Long Beach, Bell Gardens, Cypress, Los Angeles, South Gate, Anaheim, Los Alamitos, Lynwood, South El Monte, Maywood, Compton, La Puente, Monterey Park, Stanton, Brea, Huntington Park, Rowland Heights, Rosemead, Garden Grove, El Monte, Signal Hill, Carson, San Gabriel, West Covina, Seal Beach, Alhambra, Westminster, Placentia, City Of Industry, Temple City, Walnut, Baldwin Park, Midway City, Gardena, Orange, Surfside, Atwood, Huntington Beach, Arcadia, San Marino, Sunset Beach, South Pasadena, Diamond Bar, Covina, Santa Ana, Torrance, Yorba Linda, Wilmington, Pasadena, Duarte, Inglewood, Monrovia, Fountain Valley, Villa Park, Harbor City, Sierra Madre, Hawthorne, Azusa, Lawndale, Lomita, San Pedro, Glendale, Pomona, Glendora, Redondo Beach, Tustin, Altadena, La Crescenta, Chino Hills, Costa Mesa, San Dimas, Manhattan Beach, El Segundo, Hermosa Beach, Culver City, Irvine, Rancho Palos Verdes, Palos Verdes Peninsula, North Hills, Playa Vista, Beverly Hills, Mount Wilson, La Canada Flintridge, Newport Beach, Montrose, West Hollywood, Playa Del Rey, Aliso Viejo, Marina Del Rey, Burbank, Verdugo City, Universal City, Montclair, Chino, La Verne, Venice, North Hollywood, Claremont, East Irvine, Studio City, Santa Monica, Corona Del Mar, Toluca Lake, Valley Village, Ontario, Corona, Pacoima, Upland, Newport Coast, Tujunga, Sherman Oaks, Foothill Ranch, Sun Valley, Valyermo, Sunland, Van Nuys, Norco, Silverado, Guasti, Laguna Woods, Lake Forest, Rancho Cucamonga, Encino";
@@ -54,4 +54,85 @@ document.getElementById("btn4").onclick = function () {
   document.getElementById("btn3").style.color = '#000000';
   document.getElementById("btn1").style.background = 'white';
   document.getElementById("btn1").style.color = '#000000';
+}
+
+
+var slider = document.querySelector('.slider');
+var isDown = false;
+var startX;
+var scrollLeft;
+
+slider.addEventListener('mousedown', function (e) {
+  isDown = true;
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+
+slider.addEventListener('mouseleave', function () {
+  isDown = false;
+});
+
+slider.addEventListener('mouseup', function () {
+  isDown = false;
+});
+
+slider.addEventListener('mousemove', function (e) {
+  if (!isDown) return;
+  e.preventDefault();
+  var x = e.pageX - slider.offsetLeft;
+  var walk = (x - startX) * 3;
+  slider.scrollLeft = scrollLeft - walk;
+});
+
+
+function toggleMenu() {
+  var menu = document.getElementById("dropdown-menu");
+  if (menu.classList.contains("show")) {
+    menu.classList.remove("show");
+  } else {
+    menu.classList.add("show");
+  }
+}
+
+function toggleMenu() {
+  var menu = document.getElementById("dropdown-menu");
+  var icon = document.querySelector(".icon");
+  if (menu.classList.contains("show")) {
+    menu.classList.remove("show");
+    icon.classList.remove("close");
+    icon.classList.add("open");
+  } else {
+    menu.classList.add("show");
+    icon.classList.remove("open");
+    icon.classList.add("close");
+  }
+}
+
+
+
+
+function toggleDropdown(dropdownNum) {
+  var dropdown = document.getElementById("dropdown" + dropdownNum);
+  var icon = document.getElementById("icon" + dropdownNum);
+  if (dropdown.classList.contains("show")) {
+    dropdown.classList.remove("show");
+    icon.classList.remove("rotate");
+  } else {
+    dropdown.classList.add("show");
+    icon.classList.add("rotate");
+  }
+}
+
+// Close all dropdowns if the user clicks outside of them
+window.onclick = function (event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+        document.getElementById("icon" + (i + 1)).classList.remove("rotate");
+      }
+    }
+  }
 }
